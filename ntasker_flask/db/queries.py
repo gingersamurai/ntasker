@@ -22,12 +22,15 @@ def insert_task(cur_task: Task, cur_task_data_path: str):
     cp_com = f"cp -r {cur_task_data_path}/* {STORAGE_PATH}/{cur_task.id}"
     os.system(mkdir_com)
     os.system(cp_com)
+    session.close()
 
 
 def get_task(**kwargs):
     session = init_session()
     # print(kwargs)
-    return session.execute(select(Task).filter_by(**kwargs)).fetchall()
+    result = session.execute(select(Task).filter_by(**kwargs)).fetchall()
+    session.close()
+    return result
 
 
 def update_task(task_id, **kwargs):
@@ -36,6 +39,7 @@ def update_task(task_id, **kwargs):
         update(Task).where(Task.id == task_id).values(**kwargs)
     )
     session.commit()
+    session.close()
     
 def delete_task(task_id):
     session = init_session()
@@ -43,4 +47,4 @@ def delete_task(task_id):
     session.delete(cur_task)
     session.commit()
     os.system(f"rm -rf {STORAGE_PATH}/{task_id}")
-    # print(cur_task)
+    session.close()
