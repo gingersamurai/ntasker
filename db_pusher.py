@@ -1,5 +1,5 @@
-from model import *
-import queries
+from ntasker_flask.db.model import *
+import ntasker_flask.db.queries as queries
 import os
 import sys
 import json
