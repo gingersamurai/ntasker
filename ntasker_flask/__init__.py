@@ -2,9 +2,18 @@ from flask import Flask, redirect, Blueprint, render_template, request, url_for
 from ntasker_flask.db.queries import get_task
 from ntasker_flask.view import bp
 from ntasker_flask.db.model import *
+import os 
 
-app = Flask(__name__)
+app = Flask(__name__,
+    # instance_relative_config=True,
+    # instance_path='/storage'
+)
+
 app.register_blueprint(bp)
+
+app.config.from_mapping(
+    DATA_FOLDER='storage'
+)
 # app.config.from_object('config')
 
 # @app.route('/')
@@ -14,6 +23,7 @@ app.register_blueprint(bp)
 @app.route('/task/<type>/<subtype>')
 def task(type, subtype):
     cur_task = get_task(type=type, subtype=subtype)[0][0]
+    
     return render_template('task.html', cur_task=cur_task)
 
 @app.route('/', methods = ['POST', 'GET'])

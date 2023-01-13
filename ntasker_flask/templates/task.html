@@ -13,6 +13,18 @@
         <h3><b>Условие:</b></h3>
         {{ cur_task.statement_text | safe }}
     </div>
+    {% if cur_task.have_picture %}
+    <div class="statement_img-wrapper">
+        <img src="#" alt="Oops!" />
+    </div>
+    {% endif %}
 </div>
+
+<script>
+    task_id = "{{ cur_task.id }}";
+    // console.log(task_id);
+    const img = document.querySelector("img");
+    img.src = `/storage/${task_id}/statement_files/img.png`;
+</script>
 
 {% endblock %}
