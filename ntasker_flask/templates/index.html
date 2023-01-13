@@ -4,7 +4,10 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="css/index.css" />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/index.css', v='1') }}"
+        />
         <title>Главная страница</title>
     </head>
 
@@ -20,23 +23,15 @@
             <div class="container">
                 <h1>В итоге все что я блять смог это:</h1>
 
-                {% static main %} {% static main %}
+                {% block selector %} {% endblock %}
 
-                <form class="filter">
-                    <div class="form-wrapper">
-                        <select name="type" class="select-type">
-                            <option value="none">Выберите</option>
-                        </select>
-                        <select name="subtype" class="select-subtype">
-                            <option value="none">Выберите</option>
-                        </select>
-                        <button type="submit">Показать</button>
-                    </div>
-                </form>
-
-                <div class="task">{{ cur_task }}</div>
+                <div class="task">{% block task %} {% endblock %}</div>
             </div>
         </main>
     </body>
-    <script src="./js/index.js"></script>
+    <!-- <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/index.css', v='1') }}"
+    /> -->
+    <script src="{{ url_for('static', filename='js/index.js', v='1') }}"></script>
 </html>

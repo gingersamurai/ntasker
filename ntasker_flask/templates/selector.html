@@ -1,0 +1,17 @@
+{% extends "index.html" %} {% block task %}
+
+<form class="filter" method="post">
+    <div class="form-wrapper">
+        <select name="task_type" class="select-type">
+            <option value="none">Выберите</option>
+        </select>
+
+        <select name="task_subtype" class="select-subtype">
+            <option value="none">Выберите</option>
+        </select>
+
+        <button type="submit">Показать</button>
+    </div>
+</form>
+
+{% endblock %}

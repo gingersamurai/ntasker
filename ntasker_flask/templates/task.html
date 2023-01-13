@@ -1,5 +1,18 @@
-<h1> в итоге все что я блять смог это:</h1>
-{{ cur_task }}
-<p>
-    Дима, напиши пожалуйста тут страничку задачки пожалуйста
-</p>
+{% extends "index.html" %} {% block task %}
+<form action="/">
+    <button type="submit">На главную</button>
+</form>
+<div class="task_container">
+    <div class="type">
+        <h3><b>Задание:</b> {{ cur_task.type }}</h3>
+    </div>
+    <div class="subtype">
+        <h3><b>Тип:</b> {{ cur_task.subtype }}</h3>
+    </div>
+    <div class="statement">
+        <h3><b>Условие:</b></h3>
+        {{ cur_task.statement_text | safe }}
+    </div>
+</div>
+
+{% endblock %}
