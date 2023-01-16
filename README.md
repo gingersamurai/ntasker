@@ -6,7 +6,7 @@ mininalist self-hosted education platform written on `python3`
 ## Overview
 
 Ntasker is a free and open source platfrom focused on minimalist design and simplicity.  
-[example](misc/example.png)
+<image src="misc/example.png">
 
 ## developer guide
 
@@ -29,4 +29,4 @@ Ntasker is built using the folowing technologies:
 
 ### schemas and storage structure
 
-[schema](misc/structure.png)
+<image src="misc/structure.png">
